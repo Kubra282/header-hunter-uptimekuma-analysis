@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Hunter | Security Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #0d1117; color: #c9d1d9; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .card { background-color: #161b22; border: 1px solid #30363d; color: white; margin-bottom: 20px; }
+        .status-up { color: #238636; font-weight: bold; }
+        .status-down { color: #da3633; font-weight: bold; }
+        .header-title { color: #58a6ff; border-bottom: 2px solid #30363d; padding-bottom: 10px; margin-bottom: 30px; }
+        .stat-value { font-size: 2.5rem; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="header-title text-center">
+            <h1>🛡️ Header Hunter: Hibrit Güvenlik Analizi</h1>
+            <p>İstinye Üniversitesi - Bilişim Güvenliği Teknolojisi Vize Projesi</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card text-center p-4">
+                    <h5>Taranan Dosya</h5>
+                    <div class="stat-value text-info">128</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center p-4">
+                    <h5>Uzantı İhlali (Mismatch)</h5>
+                    <div class="stat-value text-danger">3</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center p-4">
+                    <h5>Güvenli Dosya</h5>
+                    <div class="stat-value text-success">125</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="card p-4">
+                    <h4>🔍 Uptime Kuma: Vaka Analiz Raporu Özeti</h4>
+                    <table class="table table-dark table-hover mt-3">
+                        <thead>
+                            <tr>
+                                <th>Analiz Adımı</th>
+                                <th>Kontrol Edilen Alan</th>
+                                <th>Durum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Adım 1</td>
+                                <td>install.sh Hash Kontrolü</td>
+                                <td class="status-down">Zafiyet Tespit Edildi</td>
+                            </tr>
+                            <tr>
+                                <td>Adım 2</td>
+                                <td>Port & Forensics Analizi (3001)</td>
+                                <td class="status-up">Temiz</td>
+                            </tr>
+                            <tr>
+                                <td>Adım 3</td>
+                                <td>GitHub CI/CD Webhook Güvenliği</td>
+                                <td class="status-up">İncelendi</td>
+                            </tr>
+                            <tr>
+                                <td>Adım 4</td>
+                                <td>Docker İzolasyon Denetimi</td>
+                                <td class="status-up">Güvenli</td>
+                            </tr>
+                            <tr>
+                                <td>Adım 5</td>
+                                <td>Auth Mantık Hatası (Slide 9)</td>
+                                <td class="status-down">Düzeltme Gerekiyor</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
