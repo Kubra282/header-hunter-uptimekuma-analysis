@@ -40,18 +40,19 @@ Hocanın paylaştığı **Q-Sec Vaka Analizi** kriterlerine göre gerçekleştir
 | **Adım 5** | **Auth & Tehdit Modeli** | Giriş mekanizmasındaki mantıksal hatalar (Slide 9) ve kaba kuvvet saldırısı riskleri. |
 
 ---
+## 📁 Proje Klasör Yapısı ve Dosyalar
 
-## 📁 GitHub Proje Yapısı (Klasör Mimarisi)
+Şu anki depo yapısı ve dosyaların işlevleri aşağıdadır:
 
-Proje, kurumsal yazılım standartlarına uygun olarak organize edilmiştir:
-
-* 📂 **`src/`**: `header_hunter.py` ana kaynak kodu.
-* 📂 **`tests/`**: Kodun doğruluğunu denetleyen `test_header_hunter.py` birim testleri.
-* 📂 **`reports/`**: 5 Adımlık detaylı analiz raporları (.md dosyaları).
-* 📂 **`dashboard/`**: Analiz sonuçlarını görselleştiren HTML/CSS tabanlı panel.
+* 📂 **`src/`**: `header_hunter.py` ana kaynak kodunun bulunduğu klasör.
+* 📂 **`tests/`**: Kodun doğruluğunu denetleyen birim testleri içerir.
+* 📂 **`reports/`**: Uptime Kuma vaka analizine ait 5 adımlık detaylı raporlar.
 * 📂 **`ekran-goruntuleri/`**: Analiz sırasında alınan teknik kanıtlar ve ekran çıktıları.
-* 📄 **`.env.example`**: Proje yapılandırma şablonu.
-* 🐳 **`Dockerfile` & `docker-compose.yml`**: Docker yapılandırması.
+* 📄 **`header_hunter.py`**: Aracın ana çalışma dosyası (Root erişimi için).
+* 📄 **`install.sh`**: Tersine mühendislik yöntemleriyle analiz edilen orijinal kurulum scripti.
+* 📄 **`.env.example`**: Proje yapılandırma ve çevre değişkenleri şablonu.
+* 📄 **`.gitignore`**: GitHub'a yüklenmeyecek (gizli veya gereksiz) dosyaların listesi.
+* 🐳 **`Dockerfile` & `docker-compose.yml`**: Projenin izole bir Docker konteynerinde çalıştırılmasını sağlayan yapılandırmalar.
 
 ---
 
