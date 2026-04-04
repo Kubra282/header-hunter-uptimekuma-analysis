@@ -53,7 +53,7 @@ Hocanın paylaştığı **Q-Sec Vaka Analizi** kriterlerine göre gerçekleştir
 * 📄 **`.env.example`**: Proje yapılandırma ve çevre değişkenleri şablonu.
 * 📄 **`.gitignore`**: GitHub'a yüklenmeyecek (gizli veya gereksiz) dosyaların listesi.
 * 🐳 **`Dockerfile` & `docker-compose.yml`**: Projenin izole bir Docker konteynerinde çalıştırılmasını sağlayan yapılandırmalar.
-
+* Bu proje versiyon kontrol prensiplerine uygun olarak geliştirilmiştir.
 ---
 
 ## ⚙️ Kurulum ve Çalıştırma
