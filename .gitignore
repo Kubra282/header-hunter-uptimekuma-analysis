@@ -1,0 +1,14 @@
+# Python önbelleği
+__pycache__/
+*.pyc
+
+# Gizli ayarlar (Kritik!)
+.env
+
+# İşletim sistemi kalıntıları
+.DS_Store
+Thumbs.db
+
+# Test verileri
+data/*
+!data/.gitkeep
