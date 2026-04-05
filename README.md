@@ -58,12 +58,15 @@ Hocanın paylaştığı **Q-Sec Vaka Analizi** kriterlerine göre gerçekleştir
 
 ## ⚙️ Kurulum ve Çalıştırma
 
-### Docker ile Çalıştırma (Önerilen)
-1. `.env.example` dosyasını `.env` olarak kopyalayın.
-2. Komutu çalıştırın:
+Projenin sorunsuz çalışması için terminalde proje klasöründe olduğunuzdan emin olun.
+
+### 1. Yapılandırma (Environment Setup)
+Hassas verilerin yönetimi için örnek yapılandırmayı kopyalayın:
 ```bash
-docker-compose up --build
+cp .env.example .env
 
-3.python3 -m unittest discover tests
+Docker ile Çalıştırma (Önerilen)
+sudo docker compose up --build
 
----
+Manuel Testlerin Çalıştırılması
+python3 -m unittest discover tests
