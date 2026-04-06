@@ -1,0 +1,30 @@
+name: Security & Test CI
+
+on:
+  push:
+    branches: [ "master", "main" ]
+  pull_request:
+    branches: [ "master", "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Install dependencies
+      run: |
+        pip install python-dotenv
+
+    - name: Run Header Hunter Unit Tests
+      run: |
+        python3 -m unittest discover tests
+
+    - name: Docker Build Check
+      run: |
+        docker build -t header-hunter-test .
