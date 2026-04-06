@@ -4,84 +4,90 @@
 
 
 # 🛡️ Hibrit Güvenlik Analizi: Header Hunter & Uptime Kuma Denetimi
-
 <p align="center">
-  <img src="https://img.shields.io/github/actions/workflow/status/Kubra282/Middleware-Security-and-Pihole-Analysis/test.yml?branch=vize-final-teslim&label=Security%20Tests&logo=github" alt="Security Tests">
+  <img src="https://img.shields.io/github/actions/workflow/status/Kubra282/header-hunter-uptimekuma-analysis/main.yml?branch=main&label=Security%20Tests&logo=github" alt="Security Tests">
   <img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square" alt="License">
   <img src="https://img.shields.io/badge/Python-3.9%2B-blue?logo=python" alt="Python Version">
   <img src="https://img.shields.io/badge/Docker-Enabled-blue?logo=docker" alt="Docker Support">
+  <img src="https://img.shields.io/badge/Audit-Q--Sec-red" alt="Audit Method">
 </p>
 
 ---
 
+## 👨‍🏫 Akademik Bilgiler
+* **Danışman:** Keyvan Arasteh Abbasabad
+* **Hazırlayan:** Kübra Fison
+* **Üniversite:** İstinye Üniversitesi
+* **Ders:** Tersine Mühendislik (Reverse Engineering)
 
-Bu proje, **İstinye Üniversitesi - Bilişim Güvenliği Teknolojisi** programı **Tersine Mühendislik** dersi vize ödevi kapsamında geliştirilmiştir. Proje, hem özgün bir güvenlik aracı geliştirmeyi hem de popüler bir açık kaynak projenin (Uptime Kuma) derinlemesine siber güvenlik analizini içeren **hibrit bir yapıya** sahiptir.
+---
 
-**Hazırlayan:** Kübra Fison  
-**Okul:** İstinye Üniversitesi  
-**Ders:** Tersine Mühendislik (Reverse Engineering)
+## 📜 İçindekiler
+1. [🚀 Proje Genel Bakışı](#-proje-genel-bakışı)
+2. [📁 Proje Klasör Yapısı ve Dosya İşlevleri](#-proje-klasör-yapısı-ve-dosya-işlevleri)
+3. [🛠️ 1. Parça: Header Hunter (Siber Güvenlik Aracı)](#️-1-parça-header-hunter-siber-güvenlik-aracı)
+4. [🔍 2. Parça: Uptime Kuma 5 Adımlık Güvenlik Analizi](#-2-parça-uptime-kuma-5-adımlık-güvenlik-analizi)
+5. [⚙️ Kurulum ve Çalıştırma](#-kurulum-ve-çalıştırma)
+6. [🏛️ Beklenen Derinlik (Teknik Analiz)](#-beklenen-derinlik-teknik-analiz)
 
 ---
 
 ## 🚀 Proje Genel Bakışı
+Bu çalışma, siber savunma ekosisteminde proaktif bir yaklaşım sergileyerek özgün bir güvenlik aracı geliştirmeyi (**Header Hunter**) ve popüler bir açık kaynak projenin (**Uptime Kuma**) 5 adımlık derinlemesine siber güvenlik analizini kapsayan **hibrit bir yapıdır.**
 
-Proje iki ana sütun üzerine inşa edilmiştir:
+---
 
-1.  **Geliştirilen Araç (Header Hunter):** Statik analiz yöntemlerini kullanarak, dosyaların sadece uzantılarını değil, "Magic Bytes" (dosya imzası) değerlerini kontrol eden bir Python aracıdır.
-2.  **Vaka Analizi (Uptime Kuma):** Q-Sec metodolojisi (Slide 2-10) takip edilerek, Uptime Kuma yazılımının kurulumundan Docker izolasyonuna kadar 5 kritik adımda gerçekleştirilen güvenlik denetimidir.
+## 📁 Proje Klasör Yapısı ve Dosya İşlevleri
+
+Depodaki tüm dosyaların teknik karşılıkları aşağıdadır:
+
+- **📂 `.github/`**: CI/CD (GitHub Actions) iş akışlarını barındıran otomasyon klasörü.
+- **📂 `docs/`**: Uptime Kuma vaka analizine ait 5 adımlık detaylı Markdown raporları.
+- **📂 `reports/`**: Analiz süreçlerine dair ek raporlar ve veri çıktıları.
+- **📂 `ekran-goruntuleri/`**: Analiz sırasında elde edilen teknik kanıtlar (PoC).
+- **📂 `src/`**: `header_hunter.py` ana kaynak kodunun bulunduğu dizin.
+- **📂 `tests/`**: Aracın stabilitesini denetleyen birim testleri (Unit Tests).
+- **📄 `install.sh`**: Tersine mühendislik yöntemleriyle analiz edilen orijinal kurulum scripti.
+- **📄 `Dockerfile` & `docker-compose.yml`**: Projenin izole bir sandbox ortamında çalışmasını sağlayan konteyner yapılandırmaları.
+- **📄 `TODO.md`**: Projenin gelecek geliştirme planları ve teknik roadmap'i.
+- **📄 `LICENSE`**: Projenin MIT lisans standartlarına göre korunduğunu belirten belge.
+- **📄 `.env.example`**: Güvenli yapılandırma ve çevresel değişken şablonu.
+- **📄 `.gitattributes`**: Farklı işletim sistemlerinde dosya bütünlüğünü koruyan yapılandırma.
+- **📄 `.gitignore`**: Hassas verilerin depoya sızmasını engelleyen filtre dosyası.
 
 ---
 
 ## 🛠️ 1. Parça: Header Hunter (Siber Güvenlik Aracı)
+Statik analiz yöntemlerini kullanarak, dosyaların sadece uzantılarını değil, **"Magic Bytes"** (dosya imzası) değerlerini kontrol eden proaktif bir güvenlik aracıdır.
 
-`header_hunter.py`, bir siber saldırganın dosya uzantılarını değiştirerek (örneğin zararlı bir `.exe` dosyasını `.txt` yaparak) sistemi yanıltmasını engeller.
-
-* **Çalışma Mantığı:** Dosyanın ilk birkaç baytını okur (Örn: PDF için `%PDF` veya `25 50 44 46`) ve beyan edilen uzantı ile gerçek imzanın uyuşup uyuşmadığını denetler.
-* **Teknik Altyapı:** Python 3.x ve `python-dotenv` kütüphanesi kullanılmıştır.
-* **Yapılandırma:** Tarama dizini gibi ayarlar dinamik olarak `.env` dosyasından okunur.
+* **Mimari:** Layer 5 Middleware Static Analysis & Containerized Sandbox.
+* **Protokoller:** SHA-256 Integrity Validation, .env Secret Management.
 
 ---
 
 ## 🔍 2. Parça: Uptime Kuma 5 Adımlık Güvenlik Analizi
-
-Hocanın paylaştığı **Q-Sec Vaka Analizi** kriterlerine göre gerçekleştirilen denetim adımları:
+**Q-Sec Metodolojisi** takip edilerek gerçekleştirilen denetim adımları:
 
 | Adım | Analiz Konusu | Tespit Edilen Bulgular |
 | :--- | :--- | :--- |
-| **Adım 1** | **Kurulum Güvenliği** | `install.sh` dosyasında paketlerin SHA256 hash kontrolü yapılmadan indirilmesi (Tedarik Zinciri Riski). |
-| **Adım 2** | **Adli Bilişim (Forensics)** | Sistemde aktif portların (3001) ve `kuma.db` veritabanı kalıntılarının analizi. |
-| **Adım 3** | **CI/CD & Webhook** | GitHub Actions ve dış bildirim kanallarındaki (Webhook) otomasyon güvenliği. |
-| **Adım 4** | **Docker İzolasyonu** | Konteyner yapısının kernel paylaşımı ve "Container Escape" risklerine karşı denetimi. |
-| **Adım 5** | **Auth & Tehdit Modeli** | Giriş mekanizmasındaki mantıksal hatalar (Slide 9) ve kaba kuvvet saldırısı riskleri. |
+| **Adım 1** | **Kurulum Güvenliği** | `install.sh` üzerindeki imza kontrolü eksikliği (Tedarik Zinciri Riski). |
+| **Adım 2** | **Adli Bilişim (Forensics)** | Sistem kalıntıları ve aktif port (3001) denetimi. |
+| **Adım 3** | **CI/CD & Webhook** | GitHub Actions otomasyonu ve Webhook güvenlik analizi. |
+| **Adım 4** | **Docker İzolasyonu** | Konteyner izolasyon seviyesi ve kernel paylaşım riskleri. |
+| **Adım 5** | **Auth & Tehdit Modeli** | Oturum yönetimi mantık hataları ve kaba kuvvet saldırısı analizi. |
 
----
-## 📁 Proje Klasör Yapısı ve Dosyalar
-
-Şu anki depo yapısı ve dosyaların işlevleri aşağıdadır:
-
-* 📂 **`src/`**: `header_hunter.py` ana kaynak kodunun bulunduğu klasör.
-* 📂 **`tests/`**: Kodun doğruluğunu denetleyen birim testleri içerir.
-* 📂 **`reports/`**: Uptime Kuma vaka analizine ait 5 adımlık detaylı raporlar.
-* 📂 **`ekran-goruntuleri/`**: Analiz sırasında alınan teknik kanıtlar ve ekran çıktıları.
-* 📄 **`header_hunter.py`**: Aracın ana çalışma dosyası (Root erişimi için).
-* 📄 **`install.sh`**: Tersine mühendislik yöntemleriyle analiz edilen orijinal kurulum scripti.
-* 📄 **`.env.example`**: Proje yapılandırma ve çevre değişkenleri şablonu.
-* 📄 **`.gitignore`**: GitHub'a yüklenmeyecek (gizli veya gereksiz) dosyaların listesi.
-* 🐳 **`Dockerfile` & `docker-compose.yml`**: Projenin izole bir Docker konteynerinde çalıştırılmasını sağlayan yapılandırmalar.
-* Bu proje versiyon kontrol prensiplerine uygun olarak geliştirilmiştir.
 ---
 
 ## ⚙️ Kurulum ve Çalıştırma
+---
 
-Projenin sorunsuz çalışması için terminalde proje klasöründe olduğunuzdan emin olun.
-
-### 1. Yapılandırma (Environment Setup)
-Hassas verilerin yönetimi için örnek yapılandırmayı kopyalayın:
+### 1. Yapılandırma
 ```bash
 cp .env.example .env
-
-Docker ile Çalıştırma (Önerilen)
+Docker ile Çalıştırma
 sudo docker compose up --build
-
-Manuel Testlerin Çalıştırılması
+Manuel Testler
 python3 -m unittest discover tests
+### 1. Yapılandırma
+```bash
+cp .env.example .env
