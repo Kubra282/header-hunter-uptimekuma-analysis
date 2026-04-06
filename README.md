@@ -1,4 +1,19 @@
+<p align="center">
+  <img width="204" height="192" alt="isu_logo" src="https://github.com/user-attachments/assets/83b47ed4-0449-4454-82ec-06c9c08eef43" />
+</p>
+
+
 # 🛡️ Hibrit Güvenlik Analizi: Header Hunter & Uptime Kuma Denetimi
+
+<p align="center">
+  <img src="https://img.shields.io/github/actions/workflow/status/Kubra282/Middleware-Security-and-Pihole-Analysis/test.yml?branch=vize-final-teslim&label=Security%20Tests&logo=github" alt="Security Tests">
+  <img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square" alt="License">
+  <img src="https://img.shields.io/badge/Python-3.9%2B-blue?logo=python" alt="Python Version">
+  <img src="https://img.shields.io/badge/Docker-Enabled-blue?logo=docker" alt="Docker Support">
+</p>
+
+---
+
 
 Bu proje, **İstinye Üniversitesi - Bilişim Güvenliği Teknolojisi** programı **Tersine Mühendislik** dersi vize ödevi kapsamında geliştirilmiştir. Proje, hem özgün bir güvenlik aracı geliştirmeyi hem de popüler bir açık kaynak projenin (Uptime Kuma) derinlemesine siber güvenlik analizini içeren **hibrit bir yapıya** sahiptir.
 
