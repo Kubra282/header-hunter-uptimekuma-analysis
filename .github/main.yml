@@ -1,30 +1,23 @@
-name: Security & Test CI
+name: Sentinel-H Security Audit
 
 on:
   push:
-    branches: [ "master", "main" ]
+    branches: [ "main", "master" ]
   pull_request:
-    branches: [ "master", "main" ]
+    branches: [ "main", "master" ]
 
 jobs:
-  build-and-test:
+  security-check:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.9'
-
-    - name: Install dependencies
-      run: |
-        pip install python-dotenv
-
-    - name: Run Header Hunter Unit Tests
-      run: |
-        python3 -m unittest discover tests
-
-    - name: Docker Build Check
-      run: |
-        docker build -t header-hunter-test .
+      - uses: actions/checkout@v3
+      - name: Python Setup
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Install Dependencies
+        run: pip install python-dotenv
+      - name: Static Analysis Test Run
+        run: python3 -m unittest discover tests
+      - name: Container Integrity Build
+        run: docker build -t sentinel-h-check .
