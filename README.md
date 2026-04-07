@@ -47,6 +47,7 @@ Depodaki tüm dosyaların teknik karşılıkları aşağıdadır:
 - **📂 `ekran-goruntuleri/`**: Analiz sırasında elde edilen teknik kanıtlar (PoC).
 - **📂 `src/`**: `header_hunter.py` ana kaynak kodunun bulunduğu dizin.
 - **📂 `tests/`**: Aracın stabilitesini denetleyen birim testleri (Unit Tests).
+- **📄 `Makefile`**: Proje yönetim, otomasyon ve test komutlarını barındıran teknik dosya.
 - **📄 `install.sh`**: Tersine mühendislik yöntemleriyle analiz edilen orijinal kurulum scripti.
 - **📄 `Dockerfile` & `docker-compose.yml`**: Projenin izole bir sandbox ortamında çalışmasını sağlayan konteyner yapılandırmaları.
 - **📄 `TODO.md`**: Projenin gelecek geliştirme planları ve teknik roadmap'i.
@@ -78,8 +79,22 @@ Statik analiz yöntemlerini kullanarak, dosyaların sadece uzantılarını deği
 
 ---
 
+
+
+
 ## ⚙️ Kurulum ve Çalıştırma
 ---
+
+Projenin profesyonel yönetimi için `Makefile` otomasyonu kullanılması önerilir:
+
+### 1. Yapılandırma (Environment Setup)
+```bash
+make setup
+Docker ile Çalıştırma (Önerilen)
+make docker-rebuild
+Güvenlik Testlerinin Çalıştırılması
+make test
+
 
 ### 1. Yapılandırma
 ```bash
