@@ -55,7 +55,7 @@ Depodaki tüm dosyaların teknik karşılıkları aşağıdadır:
 - **📄 `.env.example`**: Güvenli yapılandırma ve çevresel değişken şablonu.
 - **📄 `.gitattributes`**: Farklı işletim sistemlerinde dosya bütünlüğünü koruyan yapılandırma.
 - **📄 `.gitignore`**: Hassas verilerin depoya sızmasını engelleyen filtre dosyası.
-
+- **📄 `requirements.txt`**: Projenin çalışması için gerekli Python kütüphanelerini listeleyen bağımlılık dosyası.
 ---
 
 ## 🛠️ 1. Parça: Header Hunter (Siber Güvenlik Aracı)
