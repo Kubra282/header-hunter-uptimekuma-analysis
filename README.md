@@ -79,11 +79,7 @@ Statik analiz yöntemlerini kullanarak, dosyaların sadece uzantılarını deği
 
 ---
 
-
-
-
 ## ⚙️ Kurulum ve Çalıştırma
----
 
 Projenin profesyonel yönetimi için `Makefile` otomasyonu kullanılması önerilir:
 
@@ -94,15 +90,6 @@ Docker ile Çalıştırma (Önerilen)
 make docker-rebuild
 Güvenlik Testlerinin Çalıştırılması
 make test
-
-
-### 1. Yapılandırma
-```bash
-cp .env.example .env
-Docker ile Çalıştırma
-sudo docker compose up --build
-Manuel Testler
+Manuel Çalıştırma (Python)
+python3 src/header_hunter.py
 python3 -m unittest discover tests
-### 1. Yapılandırma
-```bash
-cp .env.example .env
